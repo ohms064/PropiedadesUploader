@@ -12,7 +12,9 @@ namespace PropiedadesUploader {
     public partial class Form1 : Form {
         OpenFileDialog ofdImagePreview = new OpenFileDialog();
         OpenFileDialog ofdDescriptionImages = new OpenFileDialog();
+        FTPInfo ftpInfo = new FTPInfo();
         public Form1() {
+            ofdDescriptionImages.Multiselect = true;
             InitializeComponent();
         }
 
@@ -24,14 +26,21 @@ namespace PropiedadesUploader {
         }
 
         private void button2_Click( object sender, EventArgs e ) {
-            ofdDescriptionImages.Multiselect = true;
             if ( ofdDescriptionImages.ShowDialog() == DialogResult.OK ) {
                 descriptionImagesNames.Text = "";
                 foreach ( String file in ofdDescriptionImages.SafeFileNames ) {
-                    descriptionImagesNames.Text += file; 
+                    descriptionImagesNames.Text += file + "\n"; 
                     
                 }
             }
+        }
+
+        private void button3_Click( object sender, EventArgs e ) {
+
+        }
+
+        private void direcciónToolStripMenuItem_Click( object sender, EventArgs e ) {
+            ftpInfo.Show();
         }
     }
 }
